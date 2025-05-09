@@ -12,11 +12,30 @@ namespace practice_Switch
 
         public string WhichDay()
         {
-            var rand = new Random();
-            int randomNumber = rand.Next(1, 8);
+            //var rand = new Random();
+            //int randomNumber = rand.Next(1, 8);
+            string Value = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(Value)) // empty check
+            {
+                return "Please enter a number between 1 to 7";
+            }
+          
+            int number;
+
+            if(!int.TryParse(Value, out number)) // parse check
+            {
+                return "Please enter a number between 1 to 7";
+            }
+
+            if (number < 1 || number > 7) // range check
+            {
+                return "Please enter a number between 1 to 7";
+            }
+
             string day = ""; 
 
-                switch(randomNumber)
+                switch(number)
             {
                 case 1: day = "Monday";
                     break;
@@ -33,7 +52,7 @@ namespace practice_Switch
                 case 7: day = "Sunday";
                     break;
             }
-            string answer = $"{randomNumber} is {day}";
+            string answer = $"{number} is {day}";
             return answer;
             
         }
