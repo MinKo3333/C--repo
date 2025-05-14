@@ -15,23 +15,33 @@ namespace practice_Switch
             //var rand = new Random();
             //int randomNumber = rand.Next(1, 8);
             string Value = Console.ReadLine();
+            int number;
 
             if (string.IsNullOrWhiteSpace(Value)) // empty check
             {
-                return "Please enter a number between 1 to 7";
+                Console.WriteLine("Please enter a number between 1 to 7");
+         
+                return WhichDay();
+                
             }
           
-            int number;
+           
 
             if(!int.TryParse(Value, out number)) // parse check
             {
-                return "Please enter a number between 1 to 7";
-            }
+               Console.WriteLine("Please enter a number between 1 to 7");
+              
+                return WhichDay();
+             }
 
             if (number < 1 || number > 7) // range check
             {
-                return "Please enter a number between 1 to 7";
+                Console.WriteLine("Please enter a number between 1 to 7");
+          
+                return WhichDay();
             }
+
+            number = int.Parse(Value) ;
 
             string day = ""; 
 
