@@ -11,29 +11,17 @@ namespace practice
     {
         static void Main(string[] args)
         {
-            var answer = new Program();
-            var number = answer.AreEqual();
-          
- 
-            Console.WriteLine($" {number.a},{number.b}");
+            Stats start = new Stats();
+
+            Console.WriteLine($"The number of numbers : {start.counts()}\n"+
+                              $"The sum of the numbers is:{start.getSum()}\n" +
+                              $"The average of the numbers is: {start.getAverage()}");
 
         }
-            
-        public (int a,int b) AreEqual()
-        {   var rand = new Random();
+     }
+       
 
-            int a = rand.Next(0 , 3);
-            int b = rand.Next(3 , 7);
-
-            return (a ,b);
-        }
-
-        //Oppgave 3:
-        //Lag en metode som tar inn to int verdier. Dersom en av de, eller summen til int verdiene blir 30,
-        //skal metoden returnere true. Ellers returnerer metoden false
-
-
-
-    }
+        
+   
 }
 
