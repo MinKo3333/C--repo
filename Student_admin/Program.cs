@@ -14,17 +14,17 @@
             var student1 = new Student("Ola Nordmann", "20", "Datateknologi", "123456",new List<Fag> { fagList[0], fagList[3] });
             var student2 = new Student("Elsa", "21", "Zoology", "123457", new List<Fag> { fagList[1], fagList[3] });
 
-            var karakter1 = new Karakter(student1, fagList[0]);
-            var karakter2 = new Karakter(student1, fagList[3]);
+            //var karakter1 = new Karakter(student1, fagList[0]);
+            //var karakter2 = new Karakter(student1, fagList[3]);
             
-            var karakter3 = new Karakter(student2, fagList[1]);
-            var karakter4 = new Karakter(student2, fagList[3]);
+            //var karakter3 = new Karakter(student2, fagList[1]);
+            //var karakter4 = new Karakter(student2, fagList[3]);
 
-            karakter1.SkrivUtInfo();
-            karakter2.SkrivUtInfo();
+            //karakter1.SkrivUtInfo();
+            //karakter2.SkrivUtInfo();
 
-            karakter3.SkrivUtInfo();
-            karakter4.SkrivUtInfo();
+            //karakter3.SkrivUtInfo();
+            //karakter4.SkrivUtInfo();
 
             student1.SkrivUtInfo();
             student2.SkrivUtInfo();

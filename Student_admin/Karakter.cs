@@ -12,7 +12,7 @@ namespace Student_admin
         internal Student Student { get; private set; }
         internal Fag Fag { get; private set; }
 
-        internal int Karakterverdi { get; private set; }
+        internal int Karakterverdi { get; private set; }= new Random().Next(1, 101);
 
         public Karakter(Student student, Fag fag)
         {
@@ -21,17 +21,17 @@ namespace Student_admin
         }
 
 
-        public void SkrivUtInfo()
-        {
-            Karakterverdi = new Random().Next(1, 101);
-            Console.WriteLine($"{Student.Navn}");
-            Console.WriteLine(
-                $"Fagnavn: {Fag.Fagnavn} " +
-                $"Karakterverdi: {Karakterverdi}");
+        //public void SkrivUtInfo()
+        //{
+         
+        //    Console.WriteLine($"{Student.Navn}");
+        //    Console.WriteLine(
+        //        $"Fagnavn: {Fag.Fagnavn} " +
+        //        $"Karakterverdi: {Karakterverdi}");
 
-            Student.fagkarakter.Add(Karakterverdi);
+        //    //Student.fagkarakter.Add(Karakterverdi);
             
-        }
+        //}
 
         
     
