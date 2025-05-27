@@ -1,8 +1,1 @@
-﻿[
-    {
-
-    },
-    {
-
-    }
-]
+[{"name":"Elsa","age":21,"job":"queen","workOrSchool":"Get Academy","users":[]},{"name":"Miki","age":45,"job":"mouse","workOrSchool":"Disney","users":[]},{"name":"Elon musk","age":53,"job":"Business man","workOrSchool":"X, Tesla, the White house","users":[]},{"name":"dog","age":3,"job":"dog","workOrSchool":"home","users":[]}]
