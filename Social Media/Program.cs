@@ -75,7 +75,7 @@ namespace Social_Media
                     Console.WriteLine("If you want to see more information about your friend, please type the number in front of your friend's name");
                     int index = 0;
                     int.TryParse(Console.ReadLine(),out index);
-                    if (index == 0 || index> users.Count || index< 0)
+                    while (index == 0 || index> users.Count || index< 0)
                     {
                         Console.WriteLine("Invalid answer");
                         run(1, users);
