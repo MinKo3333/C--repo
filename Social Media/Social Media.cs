@@ -11,7 +11,7 @@ namespace Social_Media
 {
     internal class Social_Media
     {
-        public void welcome(Dictionary<string, Profile> users, Profile profile)
+        public void welcome(Dictionary<string, Profile> users, Data_Handling forFunction)
         {
             bool leave = false;
 
@@ -49,17 +49,18 @@ namespace Social_Media
                         break;
 
                     case 2:
-                        Profile newUser = profile.CreateUser();
+                        Profile newUser = forFunction.CreateUser();
                         List<Profile> dummy = new List<Profile>();
                         break;
                     case 0:
+                        
                         break;
 
                 }
             }
         }
 
-        public void MainPage(Profile profile)
+        public void MainPage(Profile profile,Data_Handling forFunction)
         {
             while (true)
             {
@@ -72,7 +73,7 @@ namespace Social_Media
 
                 int answer2 = getAnswer(); // 사용자로부터 뭐할지 받기
 
-                Run(profile,answer2); // 알고리즘 돌리기
+                Run(Current_User.CurrentUser,answer2,forFunction); // 알고리즘 돌리기
                 Console.WriteLine(string.Empty.PadLeft(30, '*'));
             }
            
@@ -93,7 +94,7 @@ namespace Social_Media
         }
 
 
-        void Run(Profile profile,int answer)
+        void Run(Profile profile,int answer,Data_Handling dataHandling)
         {
             switch (answer)
             {
@@ -101,16 +102,16 @@ namespace Social_Media
                     Console.Clear();
 
                     int usernumber = 1;
-                    foreach (var friend in profile.CurrentUser.friendList)
+                    foreach (var friend in profile.friendList)
                     {
-                        Console.WriteLine($"{usernumber}. name: {friend.name}");
+                        Console.WriteLine($"{usernumber}. name: {friend.Name}");
                         usernumber++;
                     }
 
                     Console.WriteLine(
                         "If you want to see more information about your friend, please type the number in front of your friend's name");
 
-                    if (profile.CurrentUser.friendList.Count == 0)
+                    if (profile.friendList.Count == 0)
                     {
                         Console.WriteLine("You don't have any friends.");
                         break;
@@ -119,7 +120,7 @@ namespace Social_Media
                     int index = 0;
                     int.TryParse(Console.ReadLine(), out index);
 
-                    while (index == 0 || index > profile.CurrentUser.friendList.Count || index < 0)
+                    while (index == 0 || index > profile.friendList.Count || index < 0)
                     {
                         Console.WriteLine("Invalid answer");
                         Console.WriteLine(
@@ -128,37 +129,37 @@ namespace Social_Media
                     } //이상한 값 넣었을 때
 
                     Console.Clear();
-                    Console.WriteLine($"name :{profile.CurrentUser.friendList[index - 1].name}\n" +
-                                      $"age :{profile.CurrentUser.friendList[index - 1].age}\n" +
-                                      $"job: {profile.CurrentUser.friendList[index - 1].job}\n" +
-                                      $"name of work or school: {profile.CurrentUser.friendList[index - 1].workOrSchool}");
+                    Console.WriteLine($"name :{profile.friendList[index - 1].Name}\n" +
+                                      $"age :{profile.friendList[index - 1].Age}\n" +
+                                      $"job: {profile.friendList[index - 1].Job}\n" +
+                                      $"name of work or school: {profile.friendList[index - 1].WorkOrSchool}");
 
                     break;
 
                 case 2:
                     Console.Clear();
-                    profile.AddFriend();
+                    dataHandling.AddFriend();
                     break;
 
                 case 3:
                     Console.Clear();
-                    profile.removeFriend();
+                    dataHandling.removeFriend();
                     break;
 
                 case 4:
                     bool loop = true;
-                    string json = JsonSerializer.Serialize(profile.users);
+                    string json = JsonSerializer.Serialize(dataHandling.users);
                     File.WriteAllText("C:\\Users\\Princess Ko\\Desktop\\C--repo\\Social Media\\users.json", json);
                     Environment.Exit(0);
                     break;
                 case 0:
                     Console.Clear();
-                    Console.WriteLine($"name:{profile.CurrentUser.name}\n" +
-                                      $"age:{profile.CurrentUser.age}\n" +
-                                      $"job:{profile.CurrentUser.job}\n" +
-                                      $"work or school name:{profile.CurrentUser.workOrSchool}\n" +
-                                      $"user ID: {profile.CurrentUser.userId}\n" +
-                                      $"password: {profile.CurrentUser.password}");
+                    Console.WriteLine($"name:{Current_User.CurrentUser.Name}\n" +
+                                      $"age:{Current_User.CurrentUser.Age}\n" +
+                                      $"job:{Current_User.CurrentUser.Job}\n" +
+                                      $"work or school name:{Current_User.CurrentUser.WorkOrSchool}\n" +
+                                      $"user ID: {Current_User.CurrentUser.UserId}\n" +
+                                      $"password: {Current_User.CurrentUser.Password}");
                     break;
                 default:
                     Console.WriteLine("Invalid answer");

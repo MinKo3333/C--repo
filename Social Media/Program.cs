@@ -10,14 +10,14 @@ namespace Social_Media
     {
         static void Main(string[] args)
         {
-            var profile = new Profile();
             var socialMedia = new Social_Media();
+            var dataHandling = new Data_Handling();
 
-            profile.Load(); // 유저리스트 불러오기
-            socialMedia.welcome(profile.users,profile);
+            dataHandling.Load(); // 유저리스트 불러오기
+            socialMedia.welcome(dataHandling.users,dataHandling);
             Console.Clear();
-            Console.WriteLine($"Hello, {Login.CurrentUser.name}");
-            socialMedia.MainPage(profile);
+            Console.WriteLine($"Hello, {Login.CurrentUser.Name}");
+            socialMedia.MainPage(Current_User.CurrentUser,dataHandling);
 
         }
 

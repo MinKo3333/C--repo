@@ -23,12 +23,13 @@ namespace Social_Media
                 case true:
 
                     CurrentUser = users[userId];
-                    switch (password == CurrentUser.password)
+                    switch (password == CurrentUser.Password)
                     {
                         case false:
                             Console.WriteLine("Invalid password");
                             break;
                         case true:
+                            Current_User.CurrentUser = CurrentUser; // 로그인 성공시 현재 유저 프로필 세팅
                             break;
                     } 
                     break;
