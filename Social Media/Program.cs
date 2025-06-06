@@ -9,14 +9,14 @@ namespace Social_Media
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {   
+
             var socialMedia = new Social_Media();
             var dataHandling = new Data_Handling();
-
-            dataHandling.Load(); // 유저리스트 불러오기
+            dataHandling.Load();
             socialMedia.welcome(dataHandling.users,dataHandling);
             Console.Clear();
-            Console.WriteLine($"Hello, {Login.CurrentUser.Name}");
+            Console.WriteLine($"Hello, {Current_User.CurrentUser.Name}");
             socialMedia.MainPage(Current_User.CurrentUser,dataHandling);
 
         }

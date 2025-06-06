@@ -17,10 +17,8 @@ namespace Social_Media
         public int Age { get; set; }
         public string Job { get; set; }
         public string WorkOrSchool { get; set; }
-        public string UserId { get; private set; }
-        public string Password { get; private set; }
-
-        
+        public string UserId { get; set; }
+        public string Password { get; set; }
         public List<Profile> friendList { get; set; }
 
         public Profile(string name, int age, string job, string workOrSchool, string userId, string password)

@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Social_Media
+namespace ClickerGame
 {
-    internal class Current_User
+    internal interface ICommand
     {
-        public static Profile CurrentUser { get; set; }
-
-
+        public void Run(ClickerGame clikerGame);
     }
 }

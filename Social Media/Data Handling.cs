@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace Social_Media
 {
     internal class Data_Handling
     {
-        public Profile CurrentUser { get; private set; } // 현재 로그인된 유저 프로필 정보
+        public Profile CurrentUser { get;  set; } // 현재 로그인된 유저 프로필 정보
         public Dictionary<string, Profile> users { get; private set; } = new Dictionary<string, Profile>(); // 시스템내 전체 유저리스트
 
         public Data_Handling()
@@ -19,7 +20,9 @@ namespace Social_Media
 
         public void Load()
         {
-            string allUser = File.ReadAllText($"C:\\Users\\Princess Ko\\Desktop\\C--repo\\Social Media\\data\\users.json");
+            string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
+            string filePath = Path.Combine(folderPath, "users.json");
+            string allUser = File.ReadAllText(filePath);
 
             if (string.IsNullOrWhiteSpace(allUser))
             {
@@ -47,8 +50,10 @@ namespace Social_Media
 
             Profile friendToAdd = users[userid]; // 해당 유저 찾아서 친구추가할 프로필 임시저장
 
-            users[CurrentUser.UserId].friendList.Add(friendToAdd);
+            users[friendToAdd.UserId].friendList.Add(Current_User.CurrentUser);
+            users[Current_User.CurrentUser.UserId].friendList.Add(friendToAdd);
             Console.WriteLine($"{friendToAdd.Name} is added");
+
         }
 
         public void removeFriend()
@@ -85,11 +90,12 @@ namespace Social_Media
             }
 
             users.Add(newUser.UserId, newUser);
-
-
+            newUser.friendList = new List<Profile>();
+            string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
+            string filePath = Path.Combine(folderPath, "users.json");
             string json = JsonSerializer.Serialize(users);
 
-            File.WriteAllText($"C:\\Users\\Princess Ko\\Desktop\\C--repo\\Social Media\\data\\users.json", json);
+            File.WriteAllText(filePath, json);
 
             return newUser;
         }

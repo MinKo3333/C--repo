@@ -9,11 +9,12 @@ namespace Social_Media
 {
     internal class Login
     {   
-        public static Profile CurrentUser { get; private set; }
+        public Profile CurrentUser { get; private set; }
 
-        public Login(string userId,string password,Dictionary<string,Profile> users)
-        {   
-            
+        public Login(string userId,string password,Dictionary<string,Profile> users, Profile currentUser)
+        {
+            CurrentUser = currentUser;
+
             switch (users.ContainsKey(userId))
             {
                 case false:
@@ -34,7 +35,6 @@ namespace Social_Media
                     } 
                     break;
             }
-
         }
             
         

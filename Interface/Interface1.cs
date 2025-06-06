@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Social_Media
+namespace Interface
 {
-    internal class Current_User
+    internal interface Interface1
     {
-        public static Profile CurrentUser { get; set; }
-
-
     }
 }

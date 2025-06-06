@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Social_Media;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using JsonConverter = System.Text.Json.Serialization.JsonConverter;
 
 namespace Social_Media
 {
@@ -33,9 +37,11 @@ namespace Social_Media
 
                 switch (num)
                 {
-                    case 1:
-                        Console.WriteLine("Please write your id and password (example : yourid/password)");
-                        string answer2 = Console.ReadLine();
+                    case 1: 
+                        while(Current_User.CurrentUser == null)
+                        {
+                            Console.WriteLine("Please write your id and password (example : yourid/password)");
+                            string answer2 = Console.ReadLine();
 
                         if (!answer2.Contains('/'))
                         {
@@ -44,13 +50,15 @@ namespace Social_Media
                         }
 
                         string[] answer = answer2.Split('/');
-                        Login currentUser = new Login(answer[0], answer[1], users); // currentUser 로그인하고 세팅하기
+                       
+                            new Login(answer[0], answer[1], users); // currentUser 로그인하고 세팅하기
+                        }
                         leave = true;
                         break;
 
                     case 2:
-                        Profile newUser = forFunction.CreateUser();
-                        List<Profile> dummy = new List<Profile>();
+                        forFunction.CreateUser();
+                        
                         break;
                     case 0:
                         
@@ -60,7 +68,7 @@ namespace Social_Media
             }
         }
 
-        public void MainPage(Profile profile,Data_Handling forFunction)
+        public void MainPage(Profile profile,Data_Handling dataHandling)
         {
             while (true)
             {
@@ -73,7 +81,7 @@ namespace Social_Media
 
                 int answer2 = getAnswer(); // 사용자로부터 뭐할지 받기
 
-                Run(Current_User.CurrentUser,answer2,forFunction); // 알고리즘 돌리기
+                Run(Current_User.CurrentUser,answer2,dataHandling); // 알고리즘 돌리기
                 Console.WriteLine(string.Empty.PadLeft(30, '*'));
             }
            
@@ -148,8 +156,16 @@ namespace Social_Media
 
                 case 4:
                     bool loop = true;
-                    string json = JsonSerializer.Serialize(dataHandling.users);
-                    File.WriteAllText("C:\\Users\\Princess Ko\\Desktop\\C--repo\\Social Media\\users.json", json);
+
+                    var settings = new JsonSerializerSettings
+                    {
+                        ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                        Formatting = Formatting.Indented
+                    };
+                    string json = JsonConvert.SerializeObject(dataHandling.users, settings);
+                    string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
+                    string filePath = Path.Combine(folderPath, "users.json");
+                    File.WriteAllText(filePath, json);
                     Environment.Exit(0);
                     break;
                 case 0:
@@ -164,6 +180,7 @@ namespace Social_Media
                 default:
                     Console.WriteLine("Invalid answer");
                     break;
+                
             }
 
         }

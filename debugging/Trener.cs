@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Social_Media
+namespace Pokemon
 {
-    internal class Current_User
+    internal class Trener
     {
-        public static Profile CurrentUser { get; set; }
-
-
     }
 }
