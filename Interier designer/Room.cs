@@ -8,10 +8,10 @@ namespace Interier_designer
 {
     internal class Room
     {
-        public string Wallcolor {get;set;}
-        public string Tiles { get; set; }
-        public string Door { get; set; }
-        public string Decoration_Items { get; set; }
+        public string Wallcolor { get; private set;}
+        public string Tiles { get; private set; }
+        public string Door { get; private set; }
+        public string Decoration_Items { get; private set; }
 
         public Room(string wallcolor, string tiles, string door, string decoration_Items)
         {
@@ -21,8 +21,23 @@ namespace Interier_designer
             Decoration_Items = decoration_Items;
         }
 
-        public Room() { }
-    
+        public void setRoomDeco(string item)
+        {
+            Decoration_Items = item;
+        }
+        public void setRoomWallcolor(string color)
+        {
+            Wallcolor = color;
+        }
 
+        public void setRoomTile(string tile)
+        {
+            Tiles = tile;
+        }
+
+        public void setDoor(string door)
+        {
+            Door = door;
+        }
     }
 }

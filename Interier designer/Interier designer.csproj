@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="제목 없는 다이어그램.drawio" />
+  </ItemGroup>
+
 </Project>

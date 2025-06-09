@@ -11,9 +11,9 @@ namespace Social_Media
     {   
         public Profile CurrentUser { get; private set; }
 
-        public Login(string userId,string password,Dictionary<string,Profile> users, Profile currentUser)
+        public Login(string userId,string password,Dictionary<string,Profile> users)
         {
-            CurrentUser = currentUser;
+            
 
             switch (users.ContainsKey(userId))
             {
