@@ -7,7 +7,7 @@ namespace ClickerGame
         static void Main(string[] args)
         {   
             var clickerGame = new ClickerGame();
-            
+            var commandSet = new CommandSet();
 
             while (true)
             {
@@ -21,7 +21,8 @@ namespace ClickerGame
                 Console.WriteLine($"Du har {clickerGame.points} poeng.");
                 Console.WriteLine("Trykk tast for ønsket kommando.");
                 var command = Console.ReadKey().KeyChar;
-
+                commandSet.RunCommand(command,clickerGame);
+                
 
 
             }
@@ -44,7 +45,7 @@ namespace ClickerGame
     {
         public void Run(ClickerGame clikerGame)
         {
-            Environment.Exit(0);
+            clikerGame.C_X();
         }
     }
 
@@ -52,7 +53,7 @@ namespace ClickerGame
     {
         public void Run(ClickerGame clikerGame)
         {
-            clikerGame.C_K();
+            clikerGame.C_Space();
         }
     }
 

@@ -8,7 +8,7 @@ namespace ClickerGame
 {
     internal class CommandSet
     {
-        object[] commands = new object[4];
+        ICommand[] commands = new ICommand[4];
         public CommandSet()
         {
             commands[0] = new C_Space();
@@ -17,19 +17,22 @@ namespace ClickerGame
             commands[3] = new C_X();
         }
 
-        public void RunCommand(char a)
+        public void RunCommand(char a, ClickerGame clickerGame)
         {
-            if (a == 'x'){commands[3].Run();}
+            
+            if (a == 'x'){commands[3].Run(clickerGame);}
 
-            else if (a == ' ') {commands[0].Run();}
+            else if (a == ' ') {commands[0].Run(clickerGame);}
 
-            else if (a == 'k' && points >= 10)
+            else if (a == 'k' && clickerGame.points >= 10)
             {
-                commands[1].Run();
+                commands[1].Run(clickerGame);
             }
-            else(a == 's' && points >= 100){
-                commands[2].Run();
+            else if(a == 's' && clickerGame.points >= 100)
+            {
+                commands[2].Run(clickerGame);
             }
+
         }
     }
 }
