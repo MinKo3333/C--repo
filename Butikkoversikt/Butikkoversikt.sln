@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Butikkoversikt", "Butikkoversikt\Butikkoversikt.csproj", "{D9A52C25-02B3-4127-872E-10F8F3FC8BBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9A52C25-02B3-4127-872E-10F8F3FC8BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A52C25-02B3-4127-872E-10F8F3FC8BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A52C25-02B3-4127-872E-10F8F3FC8BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A52C25-02B3-4127-872E-10F8F3FC8BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
