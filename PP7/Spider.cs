@@ -1,4 +1,4 @@
-﻿namespace PP6;
+﻿namespace PP7;
 
 public class Spider : Bug
 {
